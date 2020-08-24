@@ -6,10 +6,12 @@ import 'bulma/css/bulma.css';
 import './styles.scss';
 import {createStore} from "redux";
 import { Provider } from "react-redux";
-import {rootReducer} from "./reducers/indexReducer.js"
+import  carReducer from "./reducers/carReducer.js"
 
+//import {rootReducer} from "./reducers/indexReducer.js"
+//const store= createStore(rootReducer);
 
-const store= createStore(rootReducer);
+const store = createStore(carReducer);
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
@@ -18,3 +20,5 @@ ReactDOM.render(
     </Provider>,
 rootElement
 );
+
+//createStore, Provider and reducers were added for redux

@@ -1,22 +1,25 @@
 import React, {useReducer} from 'react';
-
+import {carReducer ,ADD_FEATURE, REMOVE_FEATURE, initialState} from "./reducers/carReducer"
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import {carReducer ,ADD_FEATURE, REMOVE_FEATURE, initialState} from "./reducers/carReducer"
+//redux
+import {connect} from "react-redux";
+import from "./actions/carActions";
 
-//import {connect} from "react-redux";
 
 
 
 const App = () => {
 
-  const [state, dispatch] = useReducer( carReducer, initialState);
+//const [state, dispatch] = useReducer( carReducer, initialState);
 //we could destructure the useReducer and only get car out of the initial state const [{car}, dispatch]
 // if we used {car}, all the values below in return would start with car.
 //thie state object below is what we're importing and state thats in useReducer. 
 //useReducer needs to be at the top level so that all item using props can use it. 
+//WHEN USING REDUX, WE DONT NEED USEREDUCER
+//in order to connect anything, we use import connect
 
   // const state = {
   //   additionalPrice: 0,
@@ -35,13 +38,13 @@ const App = () => {
   //   ]
   // };
 
-  const removeFeature = feature =>{
-    dispatch({type: REMOVE_FEATURE, payload: feature});
-  };
+  // const removeFeature = feature =>{
+  //   dispatch({type: REMOVE_FEATURE, payload: feature});
+  // };
   
-  const buyItem = feature =>{
-    dispatch({type: ADD_FEATURE, payload: feature});
-  };
+  // const buyItem = feature =>{
+  //   dispatch({type: ADD_FEATURE, payload: feature});
+  // };
 
   return (
     <div className="boxes">
@@ -56,5 +59,11 @@ const App = () => {
     </div>
   );
 };
+
+const mapStateToProps = state =>{
+  return state:
+};
+
+const mapDispatchToState
 
 export default App;
