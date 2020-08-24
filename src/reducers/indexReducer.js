@@ -1,4 +1,4 @@
-import { addThatFeature} from "./additionalFeatureReducer";
+import { AddThatFeature} from "./additionalFeatureReducer";
 import {combineReducers} from "redux";
 
-export const rootReducer = combineReducers({addThatFeature});
+export const rootReducer = combineReducers({AddThatFeature});

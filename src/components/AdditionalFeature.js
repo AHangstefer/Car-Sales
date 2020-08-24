@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {ADD} from "../actions/AdditionalFeatureAction.js"
+import {AddFeature} from "../actions/additionalFeatureAction.js"
 
 
 
