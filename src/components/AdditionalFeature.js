@@ -1,6 +1,7 @@
 import React from 'react';
-import {connect} from "react-redux";
-import {AddFeature} from "../actions/additionalFeatureAction.js"
+//import {connect} from "react-redux";
+//import {AddFeature} from "../actions/additionalFeatureAction.js"
+
 
 
 
@@ -8,7 +9,7 @@ const AdditionalFeature = props => {
   return (
     <li>
       {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button">Add</button>
+      <button onClick = {()=> props.buyItem(props.feature)} className="button">Add</button>
       {props.feature.name} (+{props.feature.price})
     </li>
   );

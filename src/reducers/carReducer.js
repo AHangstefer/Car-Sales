@@ -29,14 +29,23 @@ export const carReducer = (state = initialState, action)=>{
                 additionalPrice: state.additionalPrice + action.payload.price
             };
         case REMOVE_FEATURE:
-            return  {...state,
+            return  {
+                ...state,
                 car: {...state.car,
                      features: state.car.features.filter(feature=> feature.id !== action.payload.id)
                     },
-                additionalFeatures: state.additionalFeatures.filter(feature => feature.id !== action.payload.id),
-                additionalPrice: state.additionalPrice + action.payload.price
+                additionalFeatures: [...state.additionalFeatures, action.payload],
+                additionalPrice: state.additionalPrice - action.payload.price
             };
         default:
            return state;
     }
 }
+
+//car in removefeature is overriding what's alreayd written in state.car. We're copying state.car by saying 
+//car:... state.car, then adjusting features: by copying features state.car.features, and then adding new
+//values bye calling action.payload which are the new values
+
+//whenever you call dispatch, that's when the values are passed in and it's like calling a function
+// in that when you call dispatch its dispatch({type: WHERE, payload: VALUE}). Two arguments
+//being assigned. 
