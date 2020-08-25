@@ -13,3 +13,6 @@ const AddedFeature = props => {
 };
 
 export default AddedFeature;
+
+// {()=>} is at the beginning on the onclick so that
+//the button doesn't click every time the page is rendered
