@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from "react-redux";
 
 const Header = props => {
   return (
@@ -12,4 +13,12 @@ const Header = props => {
   );
 };
 
-export default Header;
+//more efficient redux>>>
+// only briging in state.car data so the data calls in the return stay the same {props.car.image}
+
+const mapStateToProps = state => {
+  return {
+    car: state.car
+  }
+}
+export default connect(mapStateToProps, null)(Header);

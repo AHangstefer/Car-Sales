@@ -1,12 +1,21 @@
 import React, {useReducer} from 'react';
-import {carReducer ,ADD_FEATURE, REMOVE_FEATURE, initialState} from "./reducers/carReducer"
+//import {carReducer ,ADD_FEATURE, REMOVE_FEATURE, initialState} from "./reducers/carReducer"
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
+
+
 //redux
 import {connect} from "react-redux";
-import {removeFeature, buyItem} from "./actions/carActions";
+//import {removeFeature, buyItem} from "./actions/carActions";
+
+//more efficient redux >>
+// remove {useReducer}
+// remove carReducer
+// remove actions
+// remove props from App 
+// import connect to other components, starting with Header
 
 
 
@@ -49,35 +58,64 @@ const App = (props) => {
   return (
     <div className="boxes">
       <div className="box">
+        
         {/* <Header car={state.car} />
         <AddedFeatures removeFeature={removeFeature} car={state.car} />
-        redux */}
-        <Header car={props.car} />
-        <AddedFeatures removeFeature={props.removeFeature} car={props.car} />
+         */}
+
+         {/* redux >>> */}
+        {/* <Header car={props.car} />
+        <AddedFeatures removeFeature={props.removeFeature} car={props.car} /> */}
+
+         {/* More efficient redux >>> */}
+        <Header />
+        <AddedFeatures />
       </div>
       <div className="box">
         {/* <AdditionalFeatures buyItem={buyItem} additionalFeatures={state.additionalFeatures} />
         <Total car={state.car} additionalPrice={state.additionalPrice} />
         redux */}
-         <AdditionalFeatures buyItem={props.buyItem} additionalFeatures={props.additionalFeatures} />
-        <Total car={props.car} additionalPrice={props.additionalPrice} />
+
+        {/* redux >>> */}
+         {/* <AdditionalFeatures buyItem={props.buyItem} additionalFeatures={props.additionalFeatures} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} /> */}
+
+        {/* More efficient redux */}
+        <AdditionalFeatures/>
+        <Total/>
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state =>{
-  return state;
-};
 
-const mapDispatchToProps ={
-  removeFeature, 
-  buyItem
-};
+//redux >>>
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapStateToProps = state =>{
+//   return state;
+// };
 
+// const mapDispatchToProps ={
+//   removeFeature, 
+//   buyItem
+// };
+
+//removed mapStateToProps for more efficient redux
+
+//redux >>
+//export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+//more efficient redux >>
+export default App;
+
+
+//redux 
 // removeFeature is the same as bc we have a key removeFeature: removeFeature
 // can also be written:
 // const connectHOF= connect(mapStateToProps, mapDispatchToProps)
 // export default connectHOF(App);
+
+//more efficient redux
+//removed connect form App
+//removed mapStateToProps and mapDispatchToProps for more efficient redux

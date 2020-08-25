@@ -1,6 +1,13 @@
 import React from 'react';
+
+// experimenting by myself
 //import {connect} from "react-redux";
 //import {AddFeature} from "../actions/additionalFeatureAction.js"
+
+//more efficient redux
+import {connect } from "react-redux";
+import {buyItem} from "../actions/carActions";
+
 
 
 
@@ -15,4 +22,6 @@ const AdditionalFeature = props => {
   );
 };
 
-export default AdditionalFeature;
+
+//more efficient redux
+export default connect(null, {buyItem})(AdditionalFeature);

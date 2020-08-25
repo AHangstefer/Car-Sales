@@ -1,6 +1,7 @@
 import React from 'react';
+//more efficient redux
 import {connect } from "react-redux";
-import AddedFeatureActions from "../actions/addedFeatureActions";
+import {removeFeature} from "../actions/carActions";
 
 const AddedFeature = props => {
   return (
@@ -12,7 +13,11 @@ const AddedFeature = props => {
   );
 };
 
-export default AddedFeature;
+//more efficient redux
+const mapDispatchtoProps = { removeFeature };
+
+
+export default connect(null ,mapDispatchtoProps)(AddedFeature);
 
 // {()=>} is at the beginning on the onclick so that
 //the button doesn't click every time the page is rendered
