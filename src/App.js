@@ -6,12 +6,12 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 //redux
 import {connect} from "react-redux";
-import from "./actions/carActions";
+import {removeFeature, buyItem} from "./actions/carActions";
 
 
 
 
-const App = () => {
+const App = (props) => {
 
 //const [state, dispatch] = useReducer( carReducer, initialState);
 //we could destructure the useReducer and only get car out of the initial state const [{car}, dispatch]
@@ -49,21 +49,35 @@ const App = () => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
+        {/* <Header car={state.car} />
         <AddedFeatures removeFeature={removeFeature} car={state.car} />
+        redux */}
+        <Header car={props.car} />
+        <AddedFeatures removeFeature={props.removeFeature} car={props.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures buyItem={buyItem} additionalFeatures={state.additionalFeatures} />
+        {/* <AdditionalFeatures buyItem={buyItem} additionalFeatures={state.additionalFeatures} />
         <Total car={state.car} additionalPrice={state.additionalPrice} />
+        redux */}
+         <AdditionalFeatures buyItem={props.buyItem} additionalFeatures={props.additionalFeatures} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );
 };
 
 const mapStateToProps = state =>{
-  return state:
+  return state;
 };
 
-const mapDispatchToState
+const mapDispatchToProps ={
+  removeFeature, 
+  buyItem
+};
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// removeFeature is the same as bc we have a key removeFeature: removeFeature
+// can also be written:
+// const connectHOF= connect(mapStateToProps, mapDispatchToProps)
+// export default connectHOF(App);
